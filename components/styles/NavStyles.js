@@ -6,12 +6,14 @@ const NavStyles = styled.ul`
   display: flex;
   justify-self: end;
   font-size: 2rem;
+
   a,
   button {
     padding: 1rem 3rem;
     display: flex;
     align-items: center;
     position: relative;
+    z-index: 1;
     text-transform: uppercase;
     font-weight: 900;
     font-size: 1em;
@@ -29,27 +31,28 @@ const NavStyles = styled.ul`
       height: 100%;
       left: 0;
       position: absolute;
-      transform: skew(-20deg);
       top: 0;
       bottom: 0;
     }
     &:after {
-      height: 2px;
-      background: red;
-      content: '';
-      width: 0;
-      position: absolute;
-      transform: translateX(-50%);
-      transition: width 0.4s;
-      transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
-      left: 50%;
-      margin-top: 2rem;
-    }
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    background: #ff9000;
+    z-index: -1;
+    transition: transform 0.3s;
+}
     &:hover,
-    &:focus {
+   &:active{
+      color: white;
       outline: none;
       &:after {
-        width: calc(100% - 60px);
+        transform: scaleY(1);
       }
     @media (max-width: 700px) {
         width: calc(100% - 10px);

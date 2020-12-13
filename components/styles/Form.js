@@ -29,7 +29,7 @@ const Form = styled.form`
   select {
     width: 100%;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border: 1px solid black;
     &:focus {
       outline: 0;
@@ -38,10 +38,13 @@ const Form = styled.form`
   }
   button,
   input[type='submit'] {
+    float: right;
+    cursor: pointer;
     width: auto;
-    background: red;
+    background: #ff9000;
     color: white;
     border: 0;
+    text-transform: uppercase;
     font-size: 2rem;
     font-weight: 600;
     padding: 0.5rem 1.2rem;
@@ -57,7 +60,7 @@ const Form = styled.form`
       height: 10px;
       content: '';
       display: block;
-      background-image: linear-gradient(to right, #ff3019 0%, #e2b04a 50%, #ff3019 100%);
+      background-image: linear-gradient(to right, #ff9000 0%, #ff6000 50%, #ff9000 100%);
     }
     &[aria-busy='true']::before {
       background-size: 50% auto;

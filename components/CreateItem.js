@@ -41,10 +41,30 @@ class CreateItem extends Component {
     const val = type === 'number' ? parseFloat(value) : value;
     this.setState({ [name]: val });
   };
+  uploadFile = async e => {
+    console.log("uploading file.....")
+    const files = e.target.files;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'react-advanced')
+    const res = await fetch('https://api.cloudinary.com/v1_1/drfgylzce/image/upload', 
+    {
+      method: 'POST',
+      body: data
+  });
+  const file = await res.json();
+  console.log(file);
+  this.setState({
+    image: file.secure_url,
+    largeImage: file.eager[0].secure_url
+  })
+  }
 
   render() {
     return (
-      <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
+      <Mutation 
+      mutation={CREATE_ITEM_MUTATION} 
+      variables={this.state}>
         {(createItem, { loading, error, called, data }) => (
           <Form
             onSubmit={async e => {
@@ -52,7 +72,7 @@ class CreateItem extends Component {
               e.preventDefault();
               //call the mutation
               const res = await createItem();
-              //change them to product page
+              //Programmaticly link/route them to the single item page
               console.log(res);
               Router.push({
                 pathname: '/item',
@@ -62,6 +82,18 @@ class CreateItem extends Component {
           >
             <Error error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
+            <label htmlFor="file">
+                Image
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  placeholder="Upload Image"
+                  required
+                  onChange={this.uploadFile}
+                />
+                {this.state.image && <img width="150px" src={this.state.image} alt="Upload Preview" />}
+              </label>
               <label htmlFor="title">
                 Title
                 <input
@@ -75,7 +107,7 @@ class CreateItem extends Component {
                 />
               </label>
               <label htmlFor="price">
-                Prices
+                Price
                 <input
                   type="number"
                   id="price"
