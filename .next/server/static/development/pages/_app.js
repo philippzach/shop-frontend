@@ -911,6 +911,7 @@ var Nav = function Nav() {
   }, function (_ref) {
     var me = _ref.data.me;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_NavStyles__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      "data-test": "nav",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 20
@@ -1932,7 +1933,7 @@ var _jsxFileName = "/Users/Philipp/Desktop/shop-frontend/components/User.js";
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\nquery{\nme{\n    id\n    email\n    name\n    permissions\n    cart {\n        id\n        quantity\n        item {\n            id\n            price\n            image\n            title\n            description\n        }\n    }\n}}\n"]);
+  var data = _taggedTemplateLiteral(["\nquery{\nme{\n    id\n    email\n    name\n    permissions\n    cart {\n        id\n        quantity\n        item {\n            price\n            image\n            title\n            description\n        }\n    }\n}}\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -1953,7 +1954,7 @@ var User = function User(props) {
     query: CURRENT_USER_QUERY,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 26
     },
     __self: this
   }), function (payload) {

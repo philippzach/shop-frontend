@@ -13,7 +13,6 @@ me{
         id
         quantity
         item {
-            id
             price
             image
             title

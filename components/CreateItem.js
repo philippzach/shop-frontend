@@ -67,6 +67,7 @@ class CreateItem extends Component {
       variables={this.state}>
         {(createItem, { loading, error, called, data }) => (
           <Form
+          data-test="form"
             onSubmit={async e => {
               //Stop Form from submittung
               e.preventDefault();

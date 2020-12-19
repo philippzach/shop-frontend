@@ -17,7 +17,7 @@ const Nav = () => (
     }
     } */}
   {({data: {me}})=> (
-  <NavStyled>
+  <NavStyled data-test='nav'>
     <Link href="/items">
       <a>Shop</a>
     </Link>
