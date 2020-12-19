@@ -20,6 +20,7 @@ class Signin extends Component {
     name: '',
     password: '',
     email: '',
+    success: false
   };
   saveToState = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -36,12 +37,18 @@ class Signin extends Component {
             method="post"
             onSubmit={async e => {
               e.preventDefault();
-              await signup();
-              this.setState({ name: '', email: '', password: '' });
+              const res = await signup();
+            if (res) {
+              console.log(res)
+                this.setState({success: true})
+                this.setState({ name: '', email: '', password: '' });
+            };
+        
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>
-              <h2>Sign into your account</h2>
+              <h2>Login to your account</h2>
+              {this.state.success && <h2>Your are logged in</h2>}
               <Error error={error} />
               <label htmlFor="email">
                 Email
@@ -64,7 +71,7 @@ class Signin extends Component {
                 />
               </label>
 
-              <button type="submit">Sign In!</button>
+              <button type="submit">Log In!</button>
             </fieldset>
           </Form>
         )}
